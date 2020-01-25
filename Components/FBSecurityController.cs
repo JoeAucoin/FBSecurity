@@ -30,10 +30,10 @@ namespace GIBS.FBSecurity.Components
         /// <param name="moduleId"></param>
         /// <param name="itemId"></param>
         /// <returns></returns>
-        public FBSecurityInfo GetFBSecurity(int moduleId, int itemId)
-        {
-            return (FBSecurityInfo)CBO.FillObject(DataProvider.Instance().GetFBSecurity(moduleId, itemId), typeof(FBSecurityInfo));
-        }
+        //public FBSecurityInfo GetFBSecurity(int moduleId, int itemId)
+        //{
+        //    return (FBSecurityInfo)CBO.FillObject(DataProvider.Instance().GetFBSecurity(moduleId, itemId), typeof(FBSecurityInfo));
+        //}
 
 
         /// <summary>
@@ -76,7 +76,18 @@ namespace GIBS.FBSecurity.Components
 
         #endregion
 
-        
+        #region ISearchable Members
+
+        /// <summary>
+        /// Implements the search interface required to allow DNN to index/search the content of your
+        /// module
+        /// </summary>
+        /// <param name="modInfo"></param>
+        /// <returns></returns>
+      
+
+
+        #endregion
 
         #region IPortable Members
 
