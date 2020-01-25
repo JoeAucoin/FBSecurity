@@ -1,5 +1,5 @@
 ﻿<dotnetnuke type="Package" version="5.0">
-  <packages><package name="GIBS.FBSecurity" type="Module" version="1.0.1">
+  <packages><package name="GIBS.FBSecurity" type="Module" version="1.0.2">
   <friendlyName>GIBS Food Bank Security</friendlyName>
   <description>GIBS Food Bank Security</description>
   <iconFile />
@@ -12,6 +12,14 @@
   <license>The license for this package is not currently included within the installation file, please check with the vendor for full license details.</license>
   <releaseNotes />
   <components>
+    <component type="ResourceFile">
+      <resourceFiles>
+        <basePath>DesktopModules/GIBS/FBSecurity</basePath>
+        <resourceFile>
+          <name>Resources.zip</name>
+        </resourceFile>
+      </resourceFiles>
+    </component>
     <component type="Module">
       <desktopModule>
         <moduleName>GIBS.FBSecurity</moduleName>
@@ -59,40 +67,6 @@
         </assembly>
       </assemblies>
     </component>
-    <component type="File">
-      <files>
-        <basePath>DesktopModules\GIBS\FBSecurity</basePath>
-        <file>
-          <name>FBSecurity.dnn</name>
-        </file>
-        <file>
-          <path>Documentation</path>
-          <name>Documentation.css</name>
-        </file>
-        <file>
-          <path>Documentation</path>
-          <name>Documentation.html</name>
-        </file>
-        <file>
-          <path>Documentation</path>
-          <name>logo.gif</name>
-        </file>
-        <file>
-          <path>App_LocalResources</path>
-          <name>Settings.ascx.resx</name>
-        </file>
-        <file>
-          <path>App_LocalResources</path>
-          <name>ViewFBSecurity.ascx.resx</name>
-        </file>
-        <file>
-          <name>Settings.ascx</name>
-        </file>
-        <file>
-          <name>ViewFBSecurity.ascx</name>
-        </file>
-      </files>
-    </component>
-  </components>
+    </components>
 </package></packages>
 </dotnetnuke>

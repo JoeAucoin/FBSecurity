@@ -9,7 +9,7 @@ using DotNetNuke.Services.Search;
 
 namespace GIBS.FBSecurity.Components
 {
-    public class FBSecurityController : ISearchable, IPortable
+    public class FBSecurityController :  IPortable
     {
 
         #region public method
@@ -76,31 +76,7 @@ namespace GIBS.FBSecurity.Components
 
         #endregion
 
-        #region ISearchable Members
-
-        /// <summary>
-        /// Implements the search interface required to allow DNN to index/search the content of your
-        /// module
-        /// </summary>
-        /// <param name="modInfo"></param>
-        /// <returns></returns>
-        public DotNetNuke.Services.Search.SearchItemInfoCollection GetSearchItems(ModuleInfo modInfo)
-        {
-            SearchItemInfoCollection searchItems = new SearchItemInfoCollection();
-
-            List<FBSecurityInfo> infos = GetFBSecuritys(modInfo.ModuleID);
-
-            foreach (FBSecurityInfo info in infos)
-            {
-                SearchItemInfo searchInfo = new SearchItemInfo(modInfo.ModuleTitle, info.Content, info.CreatedByUser, info.CreatedDate,
-                                                    modInfo.ModuleID, info.ItemId.ToString(), info.Content, "Item=" + info.ItemId.ToString());
-                searchItems.Add(searchInfo);
-            }
-
-            return searchItems;
-        }
-
-        #endregion
+        
 
         #region IPortable Members
 

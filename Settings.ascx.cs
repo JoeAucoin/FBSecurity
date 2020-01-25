@@ -86,11 +86,8 @@ namespace GIBS.Modules.FBSecurity
 
         public void GetRoles()
         {
-            ArrayList myRoles = new ArrayList();
-
             DotNetNuke.Security.Roles.RoleController rc = new DotNetNuke.Security.Roles.RoleController();
-
-            myRoles = rc.GetPortalRoles(this.PortalId);
+            var myRoles = rc.GetRoles(this.PortalId);
 
             // REPORTS ROLE
             ddlRemoteUserRole.DataSource = myRoles;
