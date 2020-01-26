@@ -100,11 +100,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Documentation\Documentation.css" />
-    <Content Include="Documentation\Documentation.html" />
-    <Content Include="Documentation\logo.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="01.00.00.SqlDataProvider" />
     <Content Include="BuildScripts\ModulePackage.targets" />
     <Content Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
