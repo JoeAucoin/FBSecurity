@@ -18,45 +18,9 @@ namespace GIBS.FBSecurity.Components
     /// <summary>
     /// Provides strong typed access to settings used by module
     /// </summary>
-    public class FBSecuritySettings
+    public class FBSecuritySettings : ModuleSettingsBase
     {
-        ModuleController controller;
-        int tabModuleId;
-
-        public FBSecuritySettings(int tabModuleId)
-        {
-            controller = new ModuleController();
-            this.tabModuleId = tabModuleId;
-        }
-
-        protected T ReadSetting<T>(string settingName, T defaultValue)
-        {
-            Hashtable settings = controller.GetTabModuleSettings(this.tabModuleId);
-
-            T ret = default(T);
-
-            if (settings.ContainsKey(settingName))
-            {
-                System.ComponentModel.TypeConverter tc = System.ComponentModel.TypeDescriptor.GetConverter(typeof(T));
-                try
-                {
-                    ret = (T)tc.ConvertFrom(settings[settingName]);
-                }
-                catch
-                {
-                    ret = defaultValue;
-                }
-            }
-            else
-                ret = defaultValue;
-
-            return ret;
-        }
-
-        protected void WriteSetting(string settingName, string value)
-        {
-            controller.UpdateTabModuleSetting(this.tabModuleId, settingName, value);
-        }
+        
 
         #region public properties
 
@@ -64,42 +28,100 @@ namespace GIBS.FBSecurity.Components
         /// get/set template used to render the module content
         /// to the user
         /// </summary>
+        public string FlagForReviewNotify
+        {
+            get
+            {
+                if (Settings.Contains("flagForReviewNotify"))
+                    return Settings["flagForReviewNotify"].ToString();
+                return "";
+            }
+            set
+            {
+                var mc = new ModuleController();
+                mc.UpdateTabModuleSetting(TabModuleId, "flagForReviewNotify", value.ToString());
+            }
+        }
+
+
+
         public string RemoteUserRole
         {
-            get { return ReadSetting<string>("remoteUserRole", null); }
-            set { WriteSetting("remoteUserRole", value); }
+            get
+            {
+                if (Settings.Contains("remoteUserRole"))
+                    return Settings["remoteUserRole"].ToString();
+                return "";
+            }
+            set
+            {
+                var mc = new ModuleController();
+                mc.UpdateTabModuleSetting(TabModuleId, "remoteUserRole", value.ToString());
+            }
         }
-        
+
+
         public string AllowedIPAddress
         {
-            get { return ReadSetting<string>("allowedIPAddress", null); }
-            set { WriteSetting("allowedIPAddress", value); }
+            get
+            {
+                if (Settings.Contains("allowedIPAddress"))
+                    return Settings["allowedIPAddress"].ToString();
+                return "";
+            }
+            set
+            {
+                var mc = new ModuleController();
+                mc.UpdateTabModuleSetting(TabModuleId, "allowedIPAddress", value.ToString());
+            }
         }
+
 
         public string ShowResult
         {
-            get { return ReadSetting<string>("showResult", null); }
-            set { WriteSetting("showResult", value); }
+            get
+            {
+                if (Settings.Contains("showResult"))
+                    return Settings["showResult"].ToString();
+                return "";
+            }
+            set
+            {
+                var mc = new ModuleController();
+                mc.UpdateTabModuleSetting(TabModuleId, "showResult", value.ToString());
+            }
         }
+
 
         public string RedirectPage
         {
-            get { return ReadSetting<string>("redirectPage", null); }
-            set { WriteSetting("redirectPage", value); }
+            get
+            {
+                if (Settings.Contains("redirectPage"))
+                    return Settings["redirectPage"].ToString();
+                return "";
+            }
+            set
+            {
+                var mc = new ModuleController();
+                mc.UpdateTabModuleSetting(TabModuleId, "redirectPage", value.ToString());
+            }
         }
 
-        //EnableRedirect
+
         public string EnableRedirect
         {
-            get { return ReadSetting<string>("enableRedirect", null); }
-            set { WriteSetting("enableRedirect", value); }
-        }
-
-        public string FlagForReviewNotify
-        {
-
-            get { return ReadSetting<string>("flagForReviewNotify", null); }
-            set { WriteSetting("flagForReviewNotify", value); }
+            get
+            {
+                if (Settings.Contains("enableRedirect"))
+                    return Settings["enableRedirect"].ToString();
+                return "";
+            }
+            set
+            {
+                var mc = new ModuleController();
+                mc.UpdateTabModuleSetting(TabModuleId, "enableRedirect", value.ToString());
+            }
         }
 
         #endregion

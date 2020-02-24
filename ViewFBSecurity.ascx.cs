@@ -11,7 +11,7 @@ using DotNetNuke.Entities.Users;
 
 namespace GIBS.Modules.FBSecurity
 {
-    public partial class ViewFBSecurity : PortalModuleBase, IActionable
+    public partial class ViewFBSecurity : FBSecuritySettings, IActionable
     {
 
         static string _AllowedIPAddress = "";
@@ -27,7 +27,7 @@ namespace GIBS.Modules.FBSecurity
                 if (!IsPostBack)
                 {
 
-                    LoadSettings();
+                    LoadCurrentSettings();
 
                     if (CheckIPAddress(_AllowedIPAddress.ToString()))
                     {
@@ -108,44 +108,44 @@ namespace GIBS.Modules.FBSecurity
         }	
 
 
-        public void LoadSettings()
+        public void LoadCurrentSettings()
         {
             try
             {
 
 
-                FBSecuritySettings settingsData = new FBSecuritySettings(this.TabModuleId);
+                //  FBSecuritySettings settingsData = new FBSecuritySettings(this.TabModuleId);
 
 
-                if (settingsData.AllowedIPAddress != null)
+                if (Settings.Contains("allowedIPAddress"))
                 {
-                    _AllowedIPAddress = settingsData.AllowedIPAddress;
+                    _AllowedIPAddress = AllowedIPAddress;
                 }
 
-                if (settingsData.ShowResult != null)
+                if (Settings.Contains("showResult"))
                 {
-                    lblDebug.Visible = Convert.ToBoolean(settingsData.ShowResult);
+                    lblDebug.Visible = Convert.ToBoolean(ShowResult);
                 }
-                if (settingsData.RemoteUserRole != null)
+                if (Settings.Contains("remoteUserRole"))
                 {
-                    _RemoteUserRole = settingsData.RemoteUserRole;
-                }
-
-                if (settingsData.RedirectPage != null)
-                {
-                    _RedirectPage = settingsData.RedirectPage.ToString();
+                    _RemoteUserRole = RemoteUserRole;
                 }
 
-                if (settingsData.EnableRedirect != null)
+                if (Settings.Contains("redirectPage"))
                 {
-                    _EnableRedirect = Convert.ToBoolean(settingsData.EnableRedirect);
+                    _RedirectPage = RedirectPage.ToString();
+                }
+
+                if (Settings.Contains("enableRedirect"))
+                {
+                    _EnableRedirect = Convert.ToBoolean(EnableRedirect);
                 }
 
 
                 //_FlagForReviewNotify
-                if (settingsData.FlagForReviewNotify != null)
+                if (Settings.Contains("flagForReviewNotify"))
                 {
-                    _FlagForReviewNotify = settingsData.FlagForReviewNotify.ToString();
+                    _FlagForReviewNotify = FlagForReviewNotify.ToString();
                 }
 
 

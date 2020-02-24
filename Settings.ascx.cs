@@ -9,7 +9,7 @@ using DotNetNuke.Entities.Tabs;
 
 namespace GIBS.Modules.FBSecurity
 {
-    public partial class Settings : ModuleSettingsBase
+    public partial class Settings : FBSecuritySettings
     {
 
         /// <summary>
@@ -26,36 +26,36 @@ namespace GIBS.Modules.FBSecurity
                     GetRoles();
                     GetPageList();
 
-                    FBSecuritySettings settingsData = new FBSecuritySettings(this.TabModuleId);
+                    //        FBSecuritySettings settingsData = new FBSecuritySettings(this.TabModuleId);
 
-                    if (settingsData.RemoteUserRole != null)
+                    if (Settings.Contains("remoteUserRole"))
                     {
-                        ddlRemoteUserRole.SelectedValue = settingsData.RemoteUserRole;
-                    }
-
-                    if (settingsData.AllowedIPAddress != null)
-                    {
-                        txtAllowedIPAddress.Text = settingsData.AllowedIPAddress;
-                    }
-                    
-                    if (settingsData.ShowResult != null)
-                    {
-                        cbxShowResult.Checked = Convert.ToBoolean(settingsData.ShowResult);
+                        ddlRemoteUserRole.SelectedValue = RemoteUserRole.ToString();
                     }
 
-                    if (settingsData.RedirectPage != null)
+                    if (Settings.Contains("allowedIPAddress"))
                     {
-                        ddlPageList.SelectedValue = settingsData.RedirectPage;
+                        txtAllowedIPAddress.Text = AllowedIPAddress.ToString();
                     }
-                    if (settingsData.EnableRedirect != null)
+
+                    if (Settings.Contains("showResult"))
                     {
-                        cbxEnableRedirect.Checked = Convert.ToBoolean(settingsData.EnableRedirect);
+                        cbxShowResult.Checked = Convert.ToBoolean(ShowResult.ToString());
+                    }
+
+                    if (Settings.Contains("redirectPage"))
+                    {
+                        ddlPageList.SelectedValue = RedirectPage.ToString();
+                    }
+                    if (Settings.Contains("enableRedirect"))
+                    {
+                        cbxEnableRedirect.Checked = Convert.ToBoolean(EnableRedirect.ToString());
                     }
 
                     //txtFlagForReviewNotify
-                    if (settingsData.FlagForReviewNotify != null)
+                    if (Settings.Contains("flagForReviewNotify"))
                     {
-                        txtFlagForReviewNotify.Text = settingsData.FlagForReviewNotify;
+                        txtFlagForReviewNotify.Text = FlagForReviewNotify.ToString();
                     }
                     
                 }
@@ -112,13 +112,13 @@ namespace GIBS.Modules.FBSecurity
         {
             try
             {
-                FBSecuritySettings settingsData = new FBSecuritySettings(this.TabModuleId);
-                settingsData.RemoteUserRole = ddlRemoteUserRole.SelectedValue.ToString();
-                settingsData.ShowResult = cbxShowResult.Checked.ToString();
-                settingsData.AllowedIPAddress = txtAllowedIPAddress.Text.ToString();
-                settingsData.RedirectPage = ddlPageList.SelectedValue.ToString();
-                settingsData.EnableRedirect = cbxEnableRedirect.Checked.ToString();
-                settingsData.FlagForReviewNotify = txtFlagForReviewNotify.Text.ToString();
+              //  FBSecuritySettings settingsData = new FBSecuritySettings(this.TabModuleId);
+                RemoteUserRole = ddlRemoteUserRole.SelectedValue.ToString();
+                ShowResult = cbxShowResult.Checked.ToString();
+                AllowedIPAddress = txtAllowedIPAddress.Text.ToString();
+                RedirectPage = ddlPageList.SelectedValue.ToString();
+                EnableRedirect = cbxEnableRedirect.Checked.ToString();
+                FlagForReviewNotify = txtFlagForReviewNotify.Text.ToString();
             }
             catch (Exception ex)
             {

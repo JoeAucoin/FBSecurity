@@ -1,5 +1,5 @@
 ﻿<dotnetnuke type="Package" version="5.0">
-  <packages><package name="GIBS.FBSecurity" type="Module" version="1.0.2">
+  <packages><package name="GIBS.FBSecurity" type="Module" version="1.0.3">
   <friendlyName>GIBS Food Bank Security</friendlyName>
   <description>GIBS Food Bank Security</description>
   <iconFile />

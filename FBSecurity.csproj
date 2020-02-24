@@ -12,7 +12,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GIBS.Modules.FBSecurity</RootNamespace>
     <AssemblyName>GIBS.Modules.FBSecurity</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
@@ -81,7 +81,9 @@
     <Compile Include="Components\DataProvider.cs" />
     <Compile Include="Components\FBSecurityController.cs" />
     <Compile Include="Components\FBSecurityInfo.cs" />
-    <Compile Include="Components\FBSecuritySettings.cs" />
+    <Compile Include="Components\FBSecuritySettings.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Components\SqlDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.ascx.cs">
@@ -100,7 +102,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="01.00.00.SqlDataProvider" />
     <Content Include="BuildScripts\ModulePackage.targets" />
     <Content Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
     <None Include="FBSecurity.dnn" />
